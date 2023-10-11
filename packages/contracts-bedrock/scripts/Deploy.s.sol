@@ -777,7 +777,7 @@ contract Deploy is Deployer {
             _innerCallData: abi.encodeCall(
                 SystemConfig.initialize,
                 (
-                    cfg.finalSystemOwner(),
+                    cfg.finalSystemOwner(), // temp note(maurelian): This is serving as the Chain Governor
                     superchainConfigProxy,
                     SystemConfig.GasConfig({ overhead: cfg.gasPriceOracleOverhead(), scalar: cfg.gasPriceOracleScalar() }),
                     batcherHash,
@@ -1056,7 +1056,7 @@ contract Deploy is Deployer {
             _innerCallData: abi.encodeCall(
                 ProtocolVersions.initialize,
                 (
-                    finalSystemOwner,
+                    finalSystemOwner, // todo(maurelian): who should be the owner of this contract?
                     ProtocolVersion.wrap(requiredProtocolVersion),
                     ProtocolVersion.wrap(recommendedProtocolVersion)
                 )
